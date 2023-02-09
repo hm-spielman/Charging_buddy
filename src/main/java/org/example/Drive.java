@@ -9,7 +9,7 @@ public class Drive {
     private int batteryUsage;
 
     /**
-     *A drive having a departure/arrival time + battery usage for one car
+     * A drive having a departure/arrival time + battery usage for one car
      *
      * @param departure
      * @param arrival
@@ -28,6 +28,19 @@ public class Drive {
 
     public String getDay() {
         return getDeparture().getDayOfWeek().toString();
+    }
+
+    public int getDayNumber() {
+        return switch (this.getDay()) {
+            case "MONDAY" -> 0;
+            case "TUESDAY" -> 1;
+            case "WEDNESDAY" -> 2;
+            case "THURSDAY" -> 3;
+            case "FRIDAY" -> 4;
+            case "SATURDAY" -> 5;
+            case "SUNDAY" -> 6;
+            default -> -1;
+        };
     }
 
     public int getDepartureTime() {

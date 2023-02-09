@@ -1,38 +1,43 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * autostandzeit & autoladdezeit (=autostandzeit)
+ * autoabwesenheit
+ */
 public class PVSystem {
-    List<PVData> pvDataForSevenDays;
+    List<List<Integer>> sevenDayList = new ArrayList<>();
     User user;
 
-    public PVSystem(List<PVData> pvDataForSevenDays, User user) {
-        this.pvDataForSevenDays = pvDataForSevenDays;
+    public PVSystem(User user) {
         this.user = user;
+        initialiseArray();
     }
 
-    public List<Integer> getCarParkedHoursForCar(int carNumber) {
-        List<Integer> carParked = Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-
-        for (Drive drive : this.user.getDrives()) {
+    public void fillCarParkedHours(int carNumber) {
+        for (Drive drive : getUser().getDrives()) {
+            int dayNumber = drive.getDayNumber();
             int abfahrt = drive.getDepartureTime();
             int ankunft = drive.getArrivalTime();
 
-            for (int startDriveHour = abfahrt; startDriveHour <= ankunft; startDriveHour++) {
-                carParked.set(startDriveHour, 1);
+            for (int drivingHour = abfahrt; drivingHour <= ankunft; drivingHour++) {
+                sevenDayList.get(dayNumber).set(drivingHour, 1);
             }
         }
-
-        return carParked;
     }
 
-    public List<PVData> getPvDataForSevenDays() {
-        return pvDataForSevenDays;
+    public List<List<Integer>> getSevenDayList(int carNumber) {
+        fillCarParkedHours(carNumber);
+        return List.copyOf(sevenDayList);
     }
 
-    public void setPvDataForSevenDays(List<PVData> pvDataForSevenDays) {
-        this.pvDataForSevenDays = pvDataForSevenDays;
+    private void initialiseArray() {
+        for (int i = 0; i < 7; i++) {
+            sevenDayList.add(Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
+        }
     }
 
     public User getUser() {
