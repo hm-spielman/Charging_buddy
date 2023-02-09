@@ -18,7 +18,7 @@ public class Main {
         PVSystem data = new PVSystem(user);
         System.out.println(data.getSevenDayList("BMW i4"));
 
-        data.chargeBattery(user.getCars().get(0),0,20,24);
+        data.chargeBattery(user.getCars().get(0),0,15,17);
 
         System.out.println("New battery power level after drive: " + user.getCars().get(0).getCurrentBatteryCapacity());
     }
