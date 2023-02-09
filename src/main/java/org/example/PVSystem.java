@@ -65,6 +65,12 @@ public class PVSystem {
 
     private void initialisePvPower() {
         pvPower.add(Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0, 0, 113, 1119, 663, 1693, 691, 1392, 798, 374, 22, 0, 0, 0, 0, 0, 0)); //Montag
+        pvPower.add(Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0, 0, 113, 1119, 663, 1693, 691, 1392, 798, 374, 22, 0, 0, 0, 0, 0, 0)); //Montag
+        pvPower.add(Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0, 0, 113, 1119, 663, 1693, 691, 1392, 798, 374, 22, 0, 0, 0, 0, 0, 0)); //Montag
+        pvPower.add(Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0, 0, 113, 1119, 663, 1693, 691, 1392, 798, 374, 22, 0, 0, 0, 0, 0, 0)); //Montag
+        pvPower.add(Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0, 0, 113, 1119, 663, 1693, 691, 1392, 798, 374, 22, 0, 0, 0, 0, 0, 0)); //Montag
+        pvPower.add(Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0, 0, 113, 1119, 663, 1693, 691, 1392, 798, 374, 22, 0, 0, 0, 0, 0, 0)); //Montag
+        pvPower.add(Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0, 0, 113, 1119, 663, 1693, 691, 1392, 798, 374, 22, 0, 0, 0, 0, 0, 0)); //Montag
     }
 
     public User getUser() {
