@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.List;
+
 public class Car {
     private String carName;
     private int maxBatteryCapacity;
@@ -37,7 +39,7 @@ public class Car {
      */
     public void chargeBattery() {
         //Ladezeiten
-        while (this.currentBatteryCapacity < maxBatteryCapacity) {
+        if (this.currentBatteryCapacity < maxBatteryCapacity) {
             this.currentBatteryCapacity = this.currentBatteryCapacity + this.maxChargeRate;
         }
 

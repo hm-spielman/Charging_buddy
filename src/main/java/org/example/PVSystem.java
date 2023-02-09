@@ -9,35 +9,62 @@ import java.util.List;
  * autoabwesenheit
  */
 public class PVSystem {
-    List<List<Integer>> sevenDayList = new ArrayList<>();
+    List<List<Integer>> carParked = new ArrayList<>();
+    List<List<Integer>> pvPower = new ArrayList<>();
+
+    private final int minimumPvChargePower = 0;
     User user;
 
     public PVSystem(User user) {
         this.user = user;
-        initialiseArray();
+        initialiseCarParked();
+        initialisePvPower();
     }
 
-    public void fillCarParkedHours(int carNumber) {
-        for (Drive drive : getUser().getDrives()) {
-            int dayNumber = drive.getDayNumber();
-            int abfahrt = drive.getDepartureTime();
-            int ankunft = drive.getArrivalTime();
-
-            for (int drivingHour = abfahrt; drivingHour <= ankunft; drivingHour++) {
-                sevenDayList.get(dayNumber).set(drivingHour, 1);
+    /**
+     * charges the battery until its full
+     * OR until the user needs the car for another drive
+     */
+    public void chargeBattery(Car car, int dayNumber, int from, int to) {
+        if (getSevenDayList(car.getCarName()).get(dayNumber).get(from) == 0) {
+            if (getPvPower().get(dayNumber).get(from) >= minimumPvChargePower) {
+                for (int i = from; i < to; i++)
+                    car.chargeBattery();
             }
         }
     }
 
-    public List<List<Integer>> getSevenDayList(int carNumber) {
-        fillCarParkedHours(carNumber);
-        return List.copyOf(sevenDayList);
+    public void fillCarParkedHours(String carName) {
+        for (Drive drive : getUser().getDrives()) {
+            if (drive.getCarName().equals(carName)) {
+                int dayNumber = drive.getDayNumber();
+                int abfahrt = drive.getDepartureTime();
+                int ankunft = drive.getArrivalTime();
+
+                for (int drivingHour = abfahrt; drivingHour <= ankunft; drivingHour++) {
+                    carParked.get(dayNumber).set(drivingHour, 1);
+                }
+            }
+        }
     }
 
-    private void initialiseArray() {
+    public List<List<Integer>> getSevenDayList(String carName) {
+        fillCarParkedHours(carName);
+        return List.copyOf(carParked);
+    }
+
+    public List<List<Integer>> getPvPower() {
+        return List.copyOf(pvPower);
+    }
+
+    private void initialiseCarParked() {
         for (int i = 0; i < 7; i++) {
-            sevenDayList.add(Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
+            carParked.add(Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
         }
+    }
+
+    private void initialisePvPower() {
+        pvPower.add(Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0, 0, 113, 1119, 663, 1693, 691, 1392, 798, 374, 22, 0, 0, 0, 0, 0, 0)); //Montag
     }
 
     public User getUser() {

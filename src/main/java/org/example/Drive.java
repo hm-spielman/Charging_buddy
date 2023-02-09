@@ -8,6 +8,8 @@ public class Drive {
     private LocalDateTime arrival;
     private int batteryUsage;
 
+    private Car car;
+
     /**
      * A drive having a departure/arrival time + battery usage for one car
      *
@@ -15,10 +17,15 @@ public class Drive {
      * @param arrival
      * @param batteryUsage
      */
-    public Drive(LocalDateTime departure, LocalDateTime arrival, int batteryUsage) {
+    public Drive(LocalDateTime departure, LocalDateTime arrival, int batteryUsage, Car car) {
         this.departure = departure;
         this.arrival = arrival;
         this.batteryUsage = batteryUsage;
+        this.car = car;
+    }
+
+    public String getCarName() {
+        return car.getCarName();
     }
 
     public float getAwayTime() {

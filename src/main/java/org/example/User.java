@@ -45,8 +45,8 @@ public class User {
      * @param arrival
      * @param batteryUsage
      */
-    public void addDrive(LocalDateTime departure, LocalDateTime arrival, int batteryUsage) {
-        Drive drive = new Drive(departure, arrival, batteryUsage);
+    public void addDrive(LocalDateTime departure, LocalDateTime arrival, int batteryUsage, Car car) {
+        Drive drive = new Drive(departure, arrival, batteryUsage, car);
         drives.add(drive);
     }
 
