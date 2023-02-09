@@ -9,6 +9,7 @@ public class Drive {
     private int batteryUsage;
 
     /**
+     *A drive having a departure/arrival time + battery usage for one car
      *
      * @param departure
      * @param arrival
