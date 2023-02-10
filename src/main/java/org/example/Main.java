@@ -1,10 +1,11 @@
 package org.example;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         User user = new User("Benni", 12345, new ArrayList<>(), new ArrayList<>());
         user.addCar("BMW i4", 60, 60, 4);
 

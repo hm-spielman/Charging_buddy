@@ -10,6 +10,8 @@ public class User {
     private List<Car> cars = new ArrayList();
     private List<Drive> drives = new ArrayList<>();
 
+    private List<String> driveList = new ArrayList<>();
+
     /**
      * A class which describes a user.
      * A user can have several cars aswell as planned drives for a car
@@ -25,6 +27,24 @@ public class User {
         this.cars = cars;
         this.drives = drives;
     }
+
+    public String getCarNames() {
+        StringBuilder s = new StringBuilder();
+        for (Car car : this.getCars()) {
+            s.append(car.getCarName() + ", ");
+        }
+
+        return s.toString();
+    }
+
+    public void addDriveList(String s) {
+        driveList.add(s);
+    }
+
+    public List<String> getDriveList() {
+        return driveList;
+    }
+
 
     /**
      * adds a car to the list of current cars
@@ -48,6 +68,14 @@ public class User {
     public void addDrive(LocalDateTime departure, LocalDateTime arrival, int batteryUsage, Car car) {
         Drive drive = new Drive(departure, arrival, batteryUsage, car);
         drives.add(drive);
+    }
+
+    public void addDriveByString(String departure, String arrival, String batteryUsage) {
+        LocalDateTime dep = LocalDateTime.parse(departure);
+        LocalDateTime arr = LocalDateTime.parse(arrival);
+        int batUsage = Integer.parseInt(batteryUsage);
+
+        addDrive(dep, arr, batUsage, this.getCars().get(0));
     }
 
     public String getName() {
