@@ -33,6 +33,9 @@ public class FXGUI extends JFrame {
         JLabel label = new JLabel("Charging Buddy");
         label.setBounds(230, 10, 100, 50);
 
+        JLabel information = new JLabel("Willkommen bei Charging Buddy");
+        information.setBounds(10, 200, 500, 50);
+
         JButton btnAddUser = new JButton("Add User");
         btnAddUser.setBounds(10, 50, 90, 30);
         JTextField fieldAddUser = new JTextField("Max M.");
@@ -41,7 +44,7 @@ public class FXGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 user.setName(fieldAddUser.getText());
-                System.out.println("Neuer User: " + user.getName());
+                information.setText("Neuer User hinzugefügt: " + user.getName());
             }
         });
 
@@ -54,7 +57,7 @@ public class FXGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 user.addCar(fieldAddCar.getText(), 60, 60, 4);
-                System.out.println("Neues Auto hinzugefügt: " + user.getCarNames());
+                information.setText("Neues Auto hinzugefügt: " + fieldAddCar.getText() + " || Vorhandene Autos: " + user.getCarNames());
             }
         });
 
@@ -94,8 +97,7 @@ public class FXGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 user.addDriveByString(fieldDriveDep.getText(), fieldDriveArr.getText(), fieldDriveBatUsage.getText());
-                System.out.println("Geplante Fahrt: " + user.getDrives().get(0).getCarName() + " || Dauer: " + user.getDrives().get(0).getAwayTime() + "h");
-                System.out.println(user.getDriveList());
+                information.setText("Geplante Fahrt: " + user.getDrives().get(0).getCarName() + " || Dauer: " + user.getDrives().get(0).getAwayTime() + "h");
             }
         });
 
@@ -112,8 +114,11 @@ public class FXGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pvSystem.chargeBatteryWithString(fieldChargeTimeWeekDayNumber.getText(), fieldChargeTimeFrom.getText(), fieldChargeTimeTo.getText());
+                information.setText(pvSystem.getCanBeCharged());
             }
         });
+
+
 
         panel.add(btnAddUser);
         panel.add(fieldAddUser);
@@ -128,6 +133,7 @@ public class FXGUI extends JFrame {
         panel.add(fieldChargeTimeTo);
         panel.add(fieldChargeTimeFrom);
         panel.add(label);
+        panel.add(information);
         panel.setVisible(true);
 
         return panel;

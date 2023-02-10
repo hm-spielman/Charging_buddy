@@ -9,6 +9,7 @@ import java.util.List;
  * autoabwesenheit
  */
 public class PVSystem {
+    String canBeCharged;
     List<List<Integer>> carParked = new ArrayList<>();
     List<List<Integer>> pvPower = new ArrayList<>();
 
@@ -30,11 +31,15 @@ public class PVSystem {
             if (getPvPower().get(dayNumber).get(from) >= minimumPvChargePower) {
                 for (int i = from; i < to; i++)
                     car.chargeBattery();
-                System.out.println("Car " + car.getCarName() + " will be charged from " + from + "h to " + to + "h.");
+                canBeCharged = ("Car " + car.getCarName() + " will be charged from " + from + "h to " + to + "h.");
             }
         } else {
-            System.out.println("Car " + car.getCarName() + " can not be charged at that time.");
+            canBeCharged = ("Car " + car.getCarName() + " can not be charged at that time.");
         }
+    }
+
+    public String getCanBeCharged() {
+        return canBeCharged;
     }
 
     public void chargeBatteryWithString(String dayNum, String from, String to) {
