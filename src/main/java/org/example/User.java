@@ -31,7 +31,7 @@ public class User {
     public String getCarNames() {
         StringBuilder s = new StringBuilder();
         for (Car car : this.getCars()) {
-            s.append(car.getCarName() + ", ");
+            s.append(car.getCarName());
         }
 
         return s.toString();

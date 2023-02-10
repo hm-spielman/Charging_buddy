@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        User user = new User("Benni", 12345, new ArrayList<>(), new ArrayList<>());
+        /*User user = new User("Benni", 12345, new ArrayList<>(), new ArrayList<>());
         user.addCar("BMW i4", 60, 60, 4);
 
         LocalDateTime p = LocalDateTime.now();
@@ -21,7 +21,7 @@ public class Main {
 
         data.chargeBattery(user.getCars().get(0),3,15,17);
 
-        System.out.println("New battery power level after drive: " + user.getCars().get(0).getCurrentBatteryCapacity());
+        System.out.println("New battery power level after drive: " + user.getCars().get(0).getCurrentBatteryCapacity());*/
 
         new FXGUI();
     }

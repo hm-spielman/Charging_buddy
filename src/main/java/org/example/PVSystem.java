@@ -30,8 +30,20 @@ public class PVSystem {
             if (getPvPower().get(dayNumber).get(from) >= minimumPvChargePower) {
                 for (int i = from; i < to; i++)
                     car.chargeBattery();
+                System.out.println("Car " + car.getCarName() + " will be charged from " + from + "h to " + to + "h.");
             }
+        } else {
+            System.out.println("Car " + car.getCarName() + " can not be charged at that time.");
         }
+    }
+
+    public void chargeBatteryWithString(String dayNum, String from, String to) {
+        int dayNumInt = Integer.parseInt(dayNum);
+        dayNumInt--;
+        int fromInt = Integer.parseInt(from);
+        int toInt = Integer.parseInt(to);
+
+        chargeBattery(user.getCars().get(0), dayNumInt, fromInt, toInt);
     }
 
     public void fillCarParkedHours(String carName) {

@@ -3,13 +3,8 @@ package org.example;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class FXGUI extends JFrame {
@@ -29,6 +24,7 @@ public class FXGUI extends JFrame {
 
     private JPanel createMainPanel() throws IOException {
         User user = new User("User", 80000, new ArrayList<>(), new ArrayList<>());
+        PVSystem pvSystem = new PVSystem(user);
 
         JPanel panel = new JPanel(null);
         panel.setBorder(BorderFactory.createEmptyBorder(0, 5, 5, 5));
@@ -63,7 +59,7 @@ public class FXGUI extends JFrame {
         });
 
 
-        JTextField fieldDriveDep = new JTextField("2018-05-05T11:50:55");
+        JTextField fieldDriveDep = new JTextField("2023-02-10T13:50:55");
         fieldDriveDep.setBounds(125, 135, 130, 25);
         fieldDriveDep.addActionListener(new ActionListener() {
             @Override
@@ -73,7 +69,7 @@ public class FXGUI extends JFrame {
             }
         });
 
-        JTextField fieldDriveArr = new JTextField("2018-05-05T12:50:55");
+        JTextField fieldDriveArr = new JTextField("2023-02-10T14:50:55");
         fieldDriveArr.setBounds(265, 135, 130, 25);
         fieldDriveArr.addActionListener(new ActionListener() {
             @Override
@@ -98,17 +94,26 @@ public class FXGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 user.addDriveByString(fieldDriveDep.getText(), fieldDriveArr.getText(), fieldDriveBatUsage.getText());
-                System.out.println("Geplante Fahrt: " + user.getDrives().get(0).getCarName() + "|| Dauer: " + user.getDrives().get(0).getAwayTime() + "h");
+                System.out.println("Geplante Fahrt: " + user.getDrives().get(0).getCarName() + " || Dauer: " + user.getDrives().get(0).getAwayTime() + "h");
                 System.out.println(user.getDriveList());
             }
         });
 
         JButton btnAddChargeTime = new JButton("Charge");
         btnAddChargeTime.setBounds(10, 170, 90, 30);
-        JTextField fieldChargeTimeFrom = new JTextField("From");
-        fieldChargeTimeFrom.setBounds(125, 175, 30, 25);
-        JTextField fieldChargeTimeTo = new JTextField("To");
-        fieldChargeTimeTo.setBounds(160, 175, 30, 25);
+        JTextField fieldChargeTimeWeekDayNumber = new JTextField("5");
+        fieldChargeTimeWeekDayNumber.setBounds(125, 175, 80, 25);
+        JTextField fieldChargeTimeFrom = new JTextField("14");
+        fieldChargeTimeFrom.setBounds(215, 175, 35, 25);
+        JTextField fieldChargeTimeTo = new JTextField("15");
+        fieldChargeTimeTo.setBounds(265, 175, 25, 25);
+
+        btnAddChargeTime.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pvSystem.chargeBatteryWithString(fieldChargeTimeWeekDayNumber.getText(), fieldChargeTimeFrom.getText(), fieldChargeTimeTo.getText());
+            }
+        });
 
         panel.add(btnAddUser);
         panel.add(fieldAddUser);
@@ -116,6 +121,7 @@ public class FXGUI extends JFrame {
         panel.add(fieldAddCar);
         panel.add(btnAddDrive);
         panel.add(fieldDriveDep);
+        panel.add(fieldChargeTimeWeekDayNumber);
         panel.add(fieldDriveArr);
         panel.add(fieldDriveBatUsage);
         panel.add(btnAddChargeTime);
