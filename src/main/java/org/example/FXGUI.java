@@ -31,7 +31,7 @@ public class FXGUI extends JFrame {
         panel.setPreferredSize(new Dimension(500, 250));
 
         JLabel label = new JLabel("Charging Buddy");
-        label.setBounds(230, 10, 100, 50);
+        label.setBounds(215, 5, 100, 50);
 
         JLabel information = new JLabel("Willkommen bei Charging Buddy");
         information.setBounds(10, 200, 500, 50);
@@ -82,7 +82,7 @@ public class FXGUI extends JFrame {
             }
         });
         JTextField fieldDriveBatUsage = new JTextField("10");
-        fieldDriveBatUsage.setBounds(405, 135, 30, 25);
+        fieldDriveBatUsage.setBounds(405, 135, 20, 25);
         fieldDriveBatUsage.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -97,7 +97,8 @@ public class FXGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 user.addDriveByString(fieldDriveDep.getText(), fieldDriveArr.getText(), fieldDriveBatUsage.getText());
-                information.setText("Geplante Fahrt: " + user.getDrives().get(0).getCarName() + " || Dauer: " + user.getDrives().get(0).getAwayTime() + "h");
+                user.getCars().get(0).decreaseCurrentBatteryCapacity(user.getDrives().get(0));
+                information.setText("Geplante Fahrt: " + user.getDrives().get(0).getCarName() + " || Dauer: " + user.getDrives().get(0).getAwayTime() + "h" + ", Batteriestand nach Fahrt: " + user.getCars().get(0).getCurrentBatteryCapacity());
             }
         });
 
@@ -106,9 +107,9 @@ public class FXGUI extends JFrame {
         JTextField fieldChargeTimeWeekDayNumber = new JTextField("Freitag");
         fieldChargeTimeWeekDayNumber.setBounds(125, 175, 80, 25);
         JTextField fieldChargeTimeFrom = new JTextField("14");
-        fieldChargeTimeFrom.setBounds(215, 175, 35, 25);
+        fieldChargeTimeFrom.setBounds(215, 175, 25, 25);
         JTextField fieldChargeTimeTo = new JTextField("15");
-        fieldChargeTimeTo.setBounds(265, 175, 25, 25);
+        fieldChargeTimeTo.setBounds(255, 175, 25, 25);
 
         btnAddChargeTime.addActionListener(new ActionListener() {
             @Override

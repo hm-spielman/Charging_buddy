@@ -7,7 +7,6 @@
     <list default="true" id="590327e4-bfb7-4395-baca-045a745a0eaa" name="Changes" comment="Reworked GUI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/FXGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/FXGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/PVSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/PVSystem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +105,7 @@
       <workItem from="1675929463044" duration="2944000" />
       <workItem from="1675944394538" duration="10879000" />
       <workItem from="1675955292622" duration="2482000" />
-      <workItem from="1676016123831" duration="11765000" />
+      <workItem from="1676016123831" duration="13449000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1675945561434</created>
@@ -171,7 +170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676027553397</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Reworked GUI">
+      <created>1676028007883</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1676028007883</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
