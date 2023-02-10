@@ -103,7 +103,7 @@ public class FXGUI extends JFrame {
 
         JButton btnAddChargeTime = new JButton("Charge");
         btnAddChargeTime.setBounds(10, 170, 90, 30);
-        JTextField fieldChargeTimeWeekDayNumber = new JTextField("5");
+        JTextField fieldChargeTimeWeekDayNumber = new JTextField("Freitag");
         fieldChargeTimeWeekDayNumber.setBounds(125, 175, 80, 25);
         JTextField fieldChargeTimeFrom = new JTextField("14");
         fieldChargeTimeFrom.setBounds(215, 175, 35, 25);

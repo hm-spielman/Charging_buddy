@@ -42,9 +42,23 @@ public class PVSystem {
         return canBeCharged;
     }
 
+    public int getDayNumber(String s) {
+        return switch (s) {
+            case "Montag" -> 0;
+            case "Dienstag" -> 1;
+            case "Mittwoch" -> 2;
+            case "Donnerstag" -> 3;
+            case "Freitag" -> 4;
+            case "Samstag" -> 5;
+            case "Sonntag" -> 6;
+            default -> -1;
+        };
+    }
+
     public void chargeBatteryWithString(String dayNum, String from, String to) {
-        int dayNumInt = Integer.parseInt(dayNum);
-        dayNumInt--;
+        //int dayNumInt = Integer.parseInt(dayNum);
+        //dayNumInt--;
+        int dayNumInt = getDayNumber(dayNum);
         int fromInt = Integer.parseInt(from);
         int toInt = Integer.parseInt(to);
 
